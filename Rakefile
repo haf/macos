@@ -52,8 +52,9 @@ task :osx do
   `git clone https://github.com/haf/osx.git`
   in_dir "osx" do
     sh "./.osx"
-    sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-    sh "cp .bash_profile ~/"
+    sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"' unless \
+      Dir.exists? '/usr/local/Cellar'
+    sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
   end
 end
 
