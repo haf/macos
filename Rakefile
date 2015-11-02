@@ -37,7 +37,7 @@ end
 
 desc "Installs xcode. Waits for input while installer is running"
 task :xcode do
-  begin 
+  begin
     sh "xcode-select --install"
   rescue
     puts "Looks like xcode failed... was it already installed?"
@@ -65,7 +65,7 @@ task :brews do
   %w|
     git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
     python3 erlang tsung nmap sqlmap ngrep node mc editorconfig
-    rbenv-gem-rehash tmux colordiff ctags
+    rbenv-gem-rehash tmux colordiff ctags mono
   |.each do |r|
     brew r
   end
@@ -75,12 +75,17 @@ end
 
 desc "Installs common casks"
 task :casks do
-  %w[mou spectacle bittorrent-sync
-     firefox caffeine gpgtools virtualbox vagrant iterm2 adium vlc
-     disk-inventory-x spotify flux ].each do |c|
+  %w|
+    mou spectacle bittorrent-sync firefox caffeine gpgtools virtualbox vagrant
+    iterm2 adium vlc disk-inventory-x spotify flux atom
+  |.each do |c|
     cask c
   end
   sh "brew tap caskroom/fonts"
+  sh "npm install -g generator-fsharp"
+  sh "apm install ionide-installer"
+
+  puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up"
 end
 
 desc "Installs Oh-my zshell"
@@ -89,7 +94,7 @@ task :zshell do
 end
 
 desc "Sets minimum git config. Asks for input"
-task :git_config do 
+task :git_config do
   git_config "core.editor", "/usr/bin/vim"
   git_config "push.default", "simple"
 
