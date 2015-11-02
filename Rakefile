@@ -61,10 +61,12 @@ desc "Updates, upgrades and installs brews"
 task :brews do
   sh "brew update"
   sh "brew upgrade"
+  sh "brew tap homebrew/science"
   %w|
     git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
     python3 erlang tsung nmap sqlmap ngrep node mc editorconfig
     rbenv-gem-rehash tmux colordiff ctags mono
+    automake libtool autoconf opencv3
   |.each do |r|
     brew r
   end
