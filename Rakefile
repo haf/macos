@@ -34,7 +34,6 @@ def ask_for what
   STDIN.gets.strip
 end
 
-
 desc "Installs xcode. Waits for input while installer is running"
 task :xcode do
   begin
@@ -77,7 +76,7 @@ desc "Installs common casks"
 task :casks do
   %w|
     mou spectacle bittorrent-sync firefox caffeine gpgtools virtualbox vagrant
-    iterm2 adium vlc disk-inventory-x spotify flux atom
+    iterm2 adium vlc disk-inventory-x spotify flux atom dockertoolbox
   |.each do |c|
     cask c
   end
