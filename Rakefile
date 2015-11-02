@@ -4,7 +4,7 @@
 task :default => [:xcode, :osx, :brews, :casks, :zshell, :git_config, :vim_config, :computer_name]
 
 def curl what
-  sh "curl -O #{what}" 
+  sh "curl -O #{what}"
 end
 
 def brew what
@@ -21,7 +21,7 @@ def in_dir dir
     Dir.chdir dir
     yield if block_given?
   ensure
-    Dir.chdir pwd 
+    Dir.chdir pwd
   end
 end
 
@@ -99,7 +99,7 @@ end
 
 desc 'Configure vim'
 task :vim_config do
-  in_dir '~' do
+  in_dir ENV['HOME'] do
     in_dir '.vim_runtime' do
       system 'git clone https://github.com/amix/vimrc.git ~/.vim_runtime'
       sh 'chmod +x install_awesome_vimrc.sh && ./install_awesome_vimrc.sh'
