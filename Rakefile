@@ -1,5 +1,5 @@
 # coding: utf-8
-#, accept: "text/plain" !/usr/bin/ruby
+#!/usr/bin/ruby
 
 task :default => [:xcode, :osx, :brews, :casks, :zshell, :git_config, :computer_name]
 
