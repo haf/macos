@@ -1,7 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :osx, :brews, :casks, :zshell, :git_config, :computer_name]
+task :default => [:xcode, :osx, :brews, :casks, :zshell, :git_config, :vim_config, :computer_name]
 
 def curl what
   sh "curl -O #{what}" 
@@ -95,6 +95,16 @@ task :git_config do
   git_config "user.name", "'#{user}'"
   email = ask_for "Git user email: "
   git_config "user.email", "'#{email}'"
+end
+
+desc 'Configure vim'
+task :vim_config do
+  in_dir '~' do
+    in_dir '.vim_runtime' do
+      system 'git clone https://github.com/amix/vimrc.git ~/.vim_runtime'
+      sh 'chmod +x install_awesome_vimrc.sh && ./install_awesome_vimrc.sh'
+    end
+  end
 end
 
 desc "Sets computer name. Asks for input"
