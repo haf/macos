@@ -62,9 +62,11 @@ desc "Updates, upgrades and installs brews"
 task :brews do
   sh "brew update"
   sh "brew upgrade"
-  %w[git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build
-    nginx python python3 erlang tsung nmap sqlmap ngrep node mc editorconfig
-    rbenv-gem-rehash tmux colordiff].each do |r|
+  %w|
+    git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
+    python3 erlang tsung nmap sqlmap ngrep node mc editorconfig
+    rbenv-gem-rehash tmux colordiff ctags
+  |.each do |r|
     brew r
   end
   brew "imagemagick --with-webp"
