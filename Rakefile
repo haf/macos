@@ -71,6 +71,7 @@ task :brews do
     brew r
   end
   brew "imagemagick --with-webp"
+  brew "Caskroom/cask/xquartz"
   brew "tesseract --with-opencl --with-training-tools --all-languages"
   brew "caskroom/cask/brew-cask"
 end
