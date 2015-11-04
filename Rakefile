@@ -86,7 +86,8 @@ task :casks do
   sh "npm install -g generator-fsharp npm-check-updates"
   sh "apm install ionide-installer"
 
-  puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up"
+  puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up."
+  puts "Also, you'll need to install XCode from App Store to make the set up complete."
 end
 
 desc "Installs Oh-my zshell"
