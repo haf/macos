@@ -71,6 +71,7 @@ task :brews do
     brew r
   end
   brew "imagemagick --with-webp"
+  brew "libuv --universal"
   brew "Caskroom/cask/xquartz"
   # HEAD because https://github.com/tesseract-ocr/tesseract/issues/71
   # Or in short: "allheaders.h" not found if using `--with-opencl`.
