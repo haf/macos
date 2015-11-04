@@ -72,7 +72,10 @@ task :brews do
   end
   brew "imagemagick --with-webp"
   brew "Caskroom/cask/xquartz"
-  brew "tesseract --with-opencl --with-training-tools --all-languages"
+  # HEAD because https://github.com/tesseract-ocr/tesseract/issues/71
+  # Or in short: "allheaders.h" not found if using `--with-opencl`.
+  # Can be made non-HEAD by removing --with-opencl.
+  brew "tesseract --with-opencl --with-training-tools --all-languages --HEAD"
   brew "caskroom/cask/brew-cask"
 end
 
@@ -80,7 +83,7 @@ desc "Installs common casks"
 task :casks do
   %w|
     mou spectacle bittorrent-sync firefox caffeine gpgtools virtualbox vagrant
-    iterm2 adium vlc disk-inventory-x spotify flux atom dockertoolbox
+    iterm2 adium vlc disk-inventory-x spotify flux atom dockertoolbox skype
   |.each do |c|
     cask c
   end
