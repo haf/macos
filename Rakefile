@@ -83,7 +83,7 @@ task :casks do
     cask c
   end
   sh "brew tap caskroom/fonts"
-  sh "npm install -g generator-fsharp"
+  sh "npm install -g generator-fsharp npm-check-updates"
   sh "apm install ionide-installer"
 
   puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up"
