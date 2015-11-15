@@ -76,7 +76,7 @@ task :brews do
   # HEAD because https://github.com/tesseract-ocr/tesseract/issues/71
   # Or in short: "allheaders.h" not found if using `--with-opencl`.
   # Can be made non-HEAD by removing --with-opencl.
-  brew "tesseract --with-opencl --with-training-tools --all-languages --HEAD"
+  brew "tesseract --with-training-tools --all-languages"
   brew "caskroom/cask/brew-cask"
 end
 
