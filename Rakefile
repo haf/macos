@@ -64,7 +64,7 @@ task :brews do
   sh "brew tap homebrew/science"
   sh "brew tap homebrew/dupes"
   %w|
-    git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
+    git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build
     python3 erlang tsung nmap sqlmap ngrep node mc editorconfig
     rbenv-gem-rehash tmux colordiff ctags mono
     automake libtool autoconf opencv3 openssh
@@ -72,6 +72,7 @@ task :brews do
     brew r
   end
   brew "imagemagick --with-webp"
+  brew "nginx --with-spdy"
   brew "libuv --universal"
   brew "Caskroom/cask/xquartz"
   # HEAD because https://github.com/tesseract-ocr/tesseract/issues/71
