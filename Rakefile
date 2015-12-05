@@ -71,6 +71,8 @@ task :brews do
   |.each do |r|
     brew r
   end
+  brew "homebrew/boneyard/pyenv-pip-rehash"
+
   brew "imagemagick --with-webp"
   brew "nginx --with-spdy"
   brew "libuv --universal"
