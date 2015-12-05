@@ -64,8 +64,8 @@ task :brews do
   sh "brew tap homebrew/science"
   sh "brew tap homebrew/dupes"
   %w|
-    git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build
-    python3 erlang tsung nmap sqlmap ngrep node mc editorconfig
+    git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
+    pyenv erlang tsung nmap sqlmap ngrep nvm mc editorconfig
     rbenv-gem-rehash tmux colordiff ctags mono
     automake libtool autoconf opencv3 openssh
   |.each do |r|
@@ -87,6 +87,7 @@ task :casks do
   %w|
     mou spectacle bittorrent-sync firefox caffeine gpgtools virtualbox vagrant
     iterm2 adium vlc disk-inventory-x spotify flux atom dockertoolbox skype
+    1password
   |.each do |c|
     cask c
   end
@@ -132,5 +133,6 @@ task :computer_name do
   sh "sudo scutil --set HostName '#{computer_name}'"
   sh "sudo scutil --set LocalHostName '#{computer_name}'"
   sh "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string '#{computer_name.upcase}'"
+  sh "sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist"
 end
 
