@@ -66,7 +66,7 @@ task :brews do
   %w|
     git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
     pyenv erlang tsung nmap sqlmap ngrep nvm mc editorconfig
-    rbenv-gem-rehash tmux colordiff ctags mono
+    tmux colordiff ctags mono
     automake libtool autoconf opencv3 openssh
   |.each do |r|
     brew r
