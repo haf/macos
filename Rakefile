@@ -78,6 +78,8 @@ task :brews do
   brew "libuv --universal"
   brew "zeromq --universal --with-libpgm --with-libsodium"
   brew "go --cross-compile-common"
+  brew "fftw --universal"
+  brew "vips --with-python3 --with-fftw"
   brew "Caskroom/cask/xquartz"
   # HEAD because https://github.com/tesseract-ocr/tesseract/issues/71
   # Or in short: "allheaders.h" not found if using `--with-opencl`.
