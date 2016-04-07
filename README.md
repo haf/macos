@@ -12,3 +12,5 @@
  - Asks and sets computer name
  - Asks and sets git name and email
 
+Sponsored by
+[qvitoo – A.I. bookkeeping](https://qvitoo.com/?utm_source=github&utm_campaign=repos).
