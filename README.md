@@ -1,6 +1,6 @@
 ## OSX setup
 
-`curl -O https://raw.githubusercontent.com/haf/osx/master/Rakefile && rake`
+`curl -O https://raw.githubusercontent.com/haf/osx/master/Rakefile && sh 'rake download' && sh 'rake prepare' && sh 'rake install'`
 
 ### What it does
 

@@ -1,7 +1,16 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :osx, :brews, :casks, :zshell, :git_config, :vim_config, :computer_name]
+task :default => [:download]
+
+desc "Prepare system by downloading necessary software"
+task :download => [:xcode, :osx, :brews, :zshell, :git_config, :vim_config, :computer_name]
+
+desc "Prepare environment for installs"
+task :prepare => [:zshell, :vim_config]
+
+desc "Install and configure"
+task :install => [:casks, :git_config, :computer_name]
 
 def curl what
   sh "curl -O #{what}"
@@ -33,6 +42,8 @@ def ask_for what
   print what
   STDIN.gets.strip
 end
+
+#### Download steps ####
 
 desc "Installs xcode. Waits for input while installer is running"
 task :xcode do
@@ -88,6 +99,27 @@ task :brews do
   brew "caskroom/cask/brew-cask"
 end
 
+
+#### Preparing steps ####
+
+desc "Installs Oh-my zshell"
+task :zshell do
+  sh "curl -L http://install.ohmyz.sh | sh"
+end
+
+desc 'Configure vim'
+task :vim_config do
+  in_dir ENV['HOME'] do
+    system 'git clone https://github.com/amix/vimrc.git ~/.vim_runtime'
+    in_dir '.vim_runtime' do
+      sh 'chmod +x install_awesome_vimrc.sh && ./install_awesome_vimrc.sh'
+    end
+  end
+end
+
+
+#### Install steps ####
+
 desc "Installs common casks"
 task :casks do
   %w|
@@ -105,11 +137,6 @@ task :casks do
   puts "Also, you'll need to install XCode from App Store to make the set up complete."
 end
 
-desc "Installs Oh-my zshell"
-task :zshell do
-  sh "curl -L http://install.ohmyz.sh | sh"
-end
-
 desc "Sets minimum git config. Asks for input"
 task :git_config do
   git_config "core.editor", "/usr/bin/vim"
@@ -119,16 +146,6 @@ task :git_config do
   git_config "user.name", "'#{user}'"
   email = ask_for "Git user email: "
   git_config "user.email", "'#{email}'"
-end
-
-desc 'Configure vim'
-task :vim_config do
-  in_dir ENV['HOME'] do
-    system 'git clone https://github.com/amix/vimrc.git ~/.vim_runtime'
-    in_dir '.vim_runtime' do
-      sh 'chmod +x install_awesome_vimrc.sh && ./install_awesome_vimrc.sh'
-    end
-  end
 end
 
 desc "Sets computer name. Asks for input"
