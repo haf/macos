@@ -4,13 +4,10 @@
 task :default => [:download]
 
 desc "Prepare system by downloading necessary software"
-task :download => [:xcode, :osx, :brews, :zshell, :git_config, :vim_config, :computer_name]
-
-desc "Prepare environment for installs"
-task :prepare => [:zshell, :vim_config]
+task :prepare => [:xcode, :osx, :brews, :zshell, :git_config, :vim_config, :computer_name]
 
 desc "Install and configure"
-task :install => [:casks, :git_config, :computer_name]
+task :install => [:casks]
 
 def curl what
   sh "curl -O #{what}"
@@ -100,9 +97,6 @@ task :brews do
   brew "caskroom/cask/brew-cask"
 end
 
-
-#### Preparing steps ####
-
 desc "Installs Oh-my zshell"
 task :zshell do
   sh "curl -L http://install.ohmyz.sh | sh"
@@ -116,26 +110,6 @@ task :vim_config do
       sh 'chmod +x install_awesome_vimrc.sh && ./install_awesome_vimrc.sh'
     end
   end
-end
-
-
-#### Install steps ####
-
-desc "Installs common casks"
-task :casks do
-  %w|
-    mou spectacle bittorrent-sync caffeine gpgtools virtualbox vagrant
-    iterm2 vlc disk-inventory-x spotify flux atom dockertoolbox skype
-    1password
-  |.each do |c|
-    cask c
-  end
-  sh "brew tap caskroom/fonts"
-  sh "npm install -g generator-fsharp npm-check-updates"
-  sh "apm install ionide-installer"
-
-  puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up."
-  puts "Also, you'll need to install XCode from App Store to make the set up complete."
 end
 
 desc "Sets minimum git config. Asks for input"
@@ -160,3 +134,22 @@ task :computer_name do
   sh "sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist"
 end
 
+
+#### Install steps ####
+
+desc "Installs common casks"
+task :casks do
+  %w|
+    mou spectacle bittorrent-sync caffeine gpgtools virtualbox vagrant
+    iterm2 vlc disk-inventory-x spotify flux atom dockertoolbox skype
+    1password
+  |.each do |c|
+    cask c
+  end
+  sh "brew tap caskroom/fonts"
+  sh "npm install -g generator-fsharp npm-check-updates"
+  sh "apm install ionide-installer"
+
+  puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up."
+  puts "Also, you'll need to install XCode from App Store to make the set up complete."
+end
