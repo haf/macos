@@ -91,8 +91,8 @@ end
 desc "Installs common casks"
 task :casks do
   %w|
-    mou spectacle bittorrent-sync firefox caffeine gpgtools virtualbox vagrant
-    iterm2 adium vlc disk-inventory-x spotify flux atom dockertoolbox skype
+    mou spectacle bittorrent-sync caffeine gpgtools virtualbox vagrant
+    iterm2 vlc disk-inventory-x spotify flux atom dockertoolbox skype
     1password
   |.each do |c|
     cask c
