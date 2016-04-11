@@ -4,7 +4,7 @@
 task :default => [:download]
 
 desc "Prepare system by downloading necessary software"
-task :prepare => [:xcode, :osx, :brews, :zshell, :git_config, :vim_config, :computer_name]
+task :prepare => [:xcode, :zshell, :osx, :brews, :git_config, :vim_config, :computer_name]
 
 desc "Install and configure"
 task :install => [:casks]
@@ -54,15 +54,23 @@ task :xcode do
   end
 end
 
+desc "Installs Oh-my zshell"
+task :zshell do
+  sh "curl -L http://install.ohmyz.sh | sh"
+end
+
 desc "Sets some osx prefered settings"
 task :osx do
-  `git clone https://github.com/haf/osx.git`
+  `git clone https://github.com/lapponiandevil/osx.git`
   in_dir "osx" do
     sh "./.osx"
     sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"' unless \
       Dir.exists? '/usr/local/Cellar'
     sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
+    sh "[[ -e $HOME/.zshrc_envs ]] || cp .zshrc_envs ~/"
   end
+  line = "source ~/.zshrc_envs"
+  sh "if ! grep -Fxq '#{line}' ~/.zshrc" then echo '#{line}' >> ~/.zshrc
 end
 
 desc "Updates, upgrades and installs brews"
@@ -94,11 +102,6 @@ task :brews do
   # Can be made non-HEAD by removing --with-opencl.
   brew "tesseract --with-training-tools --all-languages"
   brew "caskroom/cask/brew-cask"
-end
-
-desc "Installs Oh-my zshell"
-task :zshell do
-  sh "curl -L http://install.ohmyz.sh | sh"
 end
 
 desc 'Configure vim'

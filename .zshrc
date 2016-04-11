@@ -1,12 +1,12 @@
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export MANPATH="/usr/local/man:$MANPATH"
 export LD_LIBRARY_PATH="$(brew --prefix)/lib:/usr/lib:/lib"
-eval "$(docker-machine env default)"
+#eval "$(docker-machine env default)"
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
-source ~/.exports
+#source ~/.exports
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 ulimit -S -n 2048
