@@ -1,6 +1,7 @@
 ## OSX setup
 
-`curl -O https://raw.githubusercontent.com/haf/osx/master/Rakefile && rake prepare && rake install`
+`curl -O https://raw.githubusercontent.com/haf/osx/master/Rakefile && rake prepare && zsh`
+'rake install`
 
 If it crashes, go into the git-cloned `osx` folder and run `rake` again.
 
