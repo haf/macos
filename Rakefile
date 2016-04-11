@@ -71,7 +71,7 @@ task :osx do
     sh "[[ -e $HOME/.zshrc_envs ]] || cp .zshrc_envs ~/"
   end
   line = "source ~/.zshrc_envs"
-  sh "if ! grep -Fxq '#{line}' ~/.zshrc" then echo '#{line}' >> ~/.zshrc
+  sh "if ! grep -Fxq '#{line}' ~/.zshrc; then echo '#{line}' >> ~/.zshrc; fi"
 end
 
 desc "Updates, upgrades and installs brews"
