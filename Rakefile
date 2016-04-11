@@ -155,7 +155,8 @@ end
 
 desc "Installs nvm, npm and atom plugins"
 task :nvm do
-  puts 'ENV'
+  sh "nvm install 5.4.0"
+  sh "npm install -g 3.3.12"
+  sh "npm install -g generator-fsharp npm-check-updates"
   sh "apm install ionide-installer"
-  sh "./osx/npm_installer.zsh"
 end
