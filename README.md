@@ -1,6 +1,6 @@
 ## OSX setup
 
-`curl -O https://raw.githubusercontent.com/lapponiandevil/master/Rakefile && rake prepare && zsh`  
+`curl -O https://raw.githubusercontent.com/lapponiandevil/osx/master/Rakefile && rake prepare && zsh`  
 `rake install`
 
 ### What it does
