@@ -4,10 +4,10 @@
 task :default => [:download]
 
 desc "Prepare system by downloading necessary software"
-task :prepare => [:xcode, :zshell, :osx, :brews, :git_config, :vim_config, :computer_name]
+task :prepare => [:xcode, :zshell, :osx, :brews, :git_config, :vim_config, :computer_name, :casks]
 
 desc "Install and configure"
-task :install => [:casks, :nvm]
+task :install => [:casks]
 
 def curl what
   sh "curl -O #{what}"
@@ -149,14 +149,7 @@ task :casks do
     cask c
   end
   sh "brew tap caskroom/fonts"
+  sh "apm install ionide-installer"
   puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up."
   puts "Also, you'll need to install XCode from App Store to make the set up complete."
-end
-
-desc "Installs nvm, npm and atom plugins"
-task :nvm do
-  sh "nvm install 5.4.0"
-  sh "npm install -g 3.3.12"
-  sh "npm install -g generator-fsharp npm-check-updates"
-  sh "apm install ionide-installer"
 end
