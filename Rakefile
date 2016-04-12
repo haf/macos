@@ -1,7 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :zshell, :osx, :brews, :git_config, :vim_config, :computer_name, :casks]
+task :default => [:xcode, :zshell, :osx, :brews, :casks, :computer_name, :vim_config, :git_config]
 
 def curl what
   sh "curl -O #{what}"
@@ -99,6 +99,32 @@ task :brews do
   brew "caskroom/cask/brew-cask"
 end
 
+desc "Installs common casks"
+task :casks do
+  %w|
+    mou spectacle bittorrent-sync caffeine gpgtools virtualbox vagrant
+    iterm2 vlc disk-inventory-x spotify flux atom dockertoolbox skype
+    1password
+  |.each do |c|
+    cask c
+  end
+  sh "brew tap caskroom/fonts"
+  sh "apm install ionide-installer"
+  puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up."
+  puts "Also, you'll need to install XCode from App Store to make the set up complete."
+end
+
+desc "Sets computer name. Asks for input"
+task :computer_name do
+  # Set computer name (as done via System Preferences → Sharing)
+  computer_name = ask_for "Computer name: "
+  sh "sudo scutil --set ComputerName '#{computer_name}'"
+  sh "sudo scutil --set HostName '#{computer_name}'"
+  sh "sudo scutil --set LocalHostName '#{computer_name}'"
+  sh "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string '#{computer_name.upcase}'"
+  sh "sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist"
+end
+
 desc 'Configure vim'
 task :vim_config do
   in_dir ENV['HOME'] do
@@ -118,33 +144,4 @@ task :git_config do
   git_config "user.name", "'#{user}'"
   email = ask_for "Git user email: "
   git_config "user.email", "'#{email}'"
-end
-
-desc "Sets computer name. Asks for input"
-task :computer_name do
-  # Set computer name (as done via System Preferences → Sharing)
-  computer_name = ask_for "Computer name: "
-  sh "sudo scutil --set ComputerName '#{computer_name}'"
-  sh "sudo scutil --set HostName '#{computer_name}'"
-  sh "sudo scutil --set LocalHostName '#{computer_name}'"
-  sh "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string '#{computer_name.upcase}'"
-  sh "sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist"
-end
-
-
-#### Install steps ####
-
-desc "Installs common casks"
-task :casks do
-  %w|
-    mou spectacle bittorrent-sync caffeine gpgtools virtualbox vagrant
-    iterm2 vlc disk-inventory-x spotify flux atom dockertoolbox skype
-    1password
-  |.each do |c|
-    cask c
-  end
-  sh "brew tap caskroom/fonts"
-  sh "apm install ionide-installer"
-  puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up."
-  puts "Also, you'll need to install XCode from App Store to make the set up complete."
 end
