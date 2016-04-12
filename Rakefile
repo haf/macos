@@ -86,7 +86,6 @@ task :brews do
 
   brew "imagemagick --with-webp"
   brew "nginx --with-spdy"
-  brew "libuv --universal"
   brew "zeromq --universal --with-libpgm --with-libsodium"
   brew "go --cross-compile-common"
   brew "fftw --universal"
