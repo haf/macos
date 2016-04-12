@@ -1,13 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:download]
-
-desc "Prepare system by downloading necessary software"
-task :prepare => [:xcode, :zshell, :osx, :brews, :git_config, :vim_config, :computer_name, :casks]
-
-desc "Install and configure"
-task :install => [:casks]
+task :default => [:download, :xcode, :zshell, :osx, :brews, :git_config, :vim_config, :computer_name, :casks]
 
 def curl what
   sh "curl -O #{what}"
