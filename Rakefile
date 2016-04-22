@@ -74,6 +74,7 @@ task :brews do
   sh "brew upgrade"
   sh "brew tap homebrew/science"
   sh "brew tap homebrew/dupes"
+  sh "brew cask install xamarin-studio"
   %w|
     git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
     pyenv erlang tsung nmap sqlmap ngrep nvm mc editorconfig
