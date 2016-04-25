@@ -1,4 +1,5 @@
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export HOMEBREW_NO_ANALYTICS=1
 export MANPATH="/usr/local/man:$MANPATH"
 export LD_LIBRARY_PATH="$(brew --prefix)/lib:/usr/lib:/lib"
 eval "$(docker-machine env default)"
