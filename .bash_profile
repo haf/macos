@@ -6,6 +6,7 @@ export PATH="/usr/local/bin:$HOME/bin:$PATH"
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/etc/Caskroom"
+export HOMEBREW_NO_ANALYTICS=1
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
