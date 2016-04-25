@@ -54,6 +54,7 @@ task :osx do
     sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"' unless \
       Dir.exists? '/usr/local/Cellar'
     sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
+    sh "touch ~/.homebrew_analytics_user_uuid && chmod 000 ~/.homebrew_analytics_user_uuid"
   end
 end
 
