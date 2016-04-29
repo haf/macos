@@ -55,7 +55,7 @@ end
 
 desc "Sets some osx prefered settings"
 task :osx do
-  `git clone https://github.com/lapponiandevil/osx.git`
+  `git clone https://github.com/haf/osx.git`
   in_dir "osx" do
     sh "./.osx"
     sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"' unless \
