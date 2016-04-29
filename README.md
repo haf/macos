@@ -2,6 +2,8 @@
 
 `curl -O https://raw.githubusercontent.com/haf/osx/master/Rakefile && rake`
 
+If it crashes, go into the git-cloned `osx` folder and run `rake` again.
+
 ### What it does
 
  - Installs xcode
