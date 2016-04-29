@@ -1,7 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :osx, :brews, :casks, :zshell, :git_config, :vim_config, :computer_name]
+task :default => [:xcode, :zshell, :osx, :brews, :casks, :computer_name, :vim_config, :git_config]
 
 def curl what
   sh "curl -O #{what}"
@@ -34,6 +34,8 @@ def ask_for what
   STDIN.gets.strip
 end
 
+#### Download steps ####
+
 desc "Installs xcode. Waits for input while installer is running"
 task :xcode do
   begin
@@ -46,6 +48,11 @@ task :xcode do
   end
 end
 
+desc "Installs Oh-my zshell"
+task :zshell do
+  sh "curl -L http://install.ohmyz.sh | sh"
+end
+
 desc "Sets some osx prefered settings"
 task :osx do
   `git clone https://github.com/haf/osx.git`
@@ -55,7 +62,10 @@ task :osx do
       Dir.exists? '/usr/local/Cellar'
     sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
     sh "touch ~/.homebrew_analytics_user_uuid && chmod 000 ~/.homebrew_analytics_user_uuid"
+    sh "[[ -e $HOME/.zshrc_envs ]] || cp .zshrc_envs ~/"
   end
+  line = "source ~/.zshrc_envs"
+  sh "if ! grep -Fxq '#{line}' ~/.zshrc; then echo '#{line}' >> ~/.zshrc; fi"
 end
 
 desc "Updates, upgrades and installs brews"
@@ -64,6 +74,7 @@ task :brews do
   sh "brew upgrade"
   sh "brew tap homebrew/science"
   sh "brew tap homebrew/dupes"
+  sh "brew cask install xamarin-studio"
   %w|
     git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
     pyenv erlang tsung nmap sqlmap ngrep nvm mc editorconfig
@@ -76,7 +87,6 @@ task :brews do
 
   brew "imagemagick --with-webp"
   brew "nginx --with-spdy"
-  brew "libuv --universal"
   brew "zeromq --universal --with-libpgm --with-libsodium"
   brew "go --cross-compile-common"
   brew "fftw --universal"
@@ -92,44 +102,16 @@ end
 desc "Installs common casks"
 task :casks do
   %w|
-    mou spectacle bittorrent-sync firefox caffeine gpgtools virtualbox vagrant
-    iterm2 adium vlc disk-inventory-x spotify flux atom dockertoolbox skype
+    mou spectacle bittorrent-sync caffeine gpgtools virtualbox vagrant
+    iterm2 vlc disk-inventory-x spotify flux atom dockertoolbox skype
     1password
   |.each do |c|
     cask c
   end
   sh "brew tap caskroom/fonts"
-  sh "npm install -g generator-fsharp npm-check-updates"
   sh "apm install ionide-installer"
-
   puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up."
   puts "Also, you'll need to install XCode from App Store to make the set up complete."
-end
-
-desc "Installs Oh-my zshell"
-task :zshell do
-  sh "curl -L http://install.ohmyz.sh | sh"
-end
-
-desc "Sets minimum git config. Asks for input"
-task :git_config do
-  git_config "core.editor", "/usr/bin/vim"
-  git_config "push.default", "simple"
-
-  user = ask_for "Git user name: "
-  git_config "user.name", "'#{user}'"
-  email = ask_for "Git user email: "
-  git_config "user.email", "'#{email}'"
-end
-
-desc 'Configure vim'
-task :vim_config do
-  in_dir ENV['HOME'] do
-    system 'git clone https://github.com/amix/vimrc.git ~/.vim_runtime'
-    in_dir '.vim_runtime' do
-      sh 'chmod +x install_awesome_vimrc.sh && ./install_awesome_vimrc.sh'
-    end
-  end
 end
 
 desc "Sets computer name. Asks for input"
@@ -143,3 +125,23 @@ task :computer_name do
   sh "sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist"
 end
 
+desc 'Configure vim'
+task :vim_config do
+  in_dir ENV['HOME'] do
+    system 'git clone https://github.com/amix/vimrc.git ~/.vim_runtime'
+    in_dir '.vim_runtime' do
+      sh 'chmod +x install_awesome_vimrc.sh && ./install_awesome_vimrc.sh'
+    end
+  end
+end
+
+desc "Sets minimum git config. Asks for input"
+task :git_config do
+  git_config "core.editor", "/usr/bin/vim"
+  git_config "push.default", "simple"
+
+  user = ask_for "Git user name: "
+  git_config "user.name", "'#{user}'"
+  email = ask_for "Git user email: "
+  git_config "user.email", "'#{email}'"
+end
