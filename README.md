@@ -1,6 +1,6 @@
 ## OSX setup
 
-`curl -O https://raw.githubusercontent.com/lapponiandevil/osx/master/Rakefile && rake`  
+`curl -O https://raw.githubusercontent.com/haf/osx/master/Rakefile && rake`  
 `zsh`  
 `. ./osx/post-install.zsh`
 
