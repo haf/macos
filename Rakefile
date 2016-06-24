@@ -1,7 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :zshell, :osx, :brews, :casks, :computer_name, :vim_config, :git_config]
+task :default => [:xcode, :zshell, :osx, :brews, :casks, :vim_config, :git_config]
 
 def curl what
   sh "curl -O #{what}"
