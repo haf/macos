@@ -55,10 +55,10 @@ end
 
 desc "Sets some osx preferred settings"
 task :osx do
-  `git clone https://github.com/lapponiandevil/osx.git`
+  `git clone https://github.com/haf/osx.git`
   in_dir "osx" do
     sh "./.osx"
-    sh 'mkdir ~/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/homebrew' unless \
+    sh "curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/homebrew" unless \
       Dir.exists? '~/homebrew/Cellar'
     sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
     sh "touch ~/.homebrew_analytics_user_uuid && chmod 000 ~/.homebrew_analytics_user_uuid"
@@ -75,11 +75,10 @@ task :brews do
   sh "brew upgrade"
   sh "brew tap homebrew/science"
   sh "brew tap homebrew/dupes"
-  sh "brew cask install xamarin-studio"
   %w|
     git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
     pyenv erlang tsung nmap sqlmap ngrep nvm mc editorconfig
-    tmux colordiff ctags mono
+    tmux colordiff ctags
     automake libtool autoconf opencv3 openssh
   |.each do |r|
     brew r
