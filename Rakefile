@@ -53,13 +53,13 @@ task :zshell do
   sh "curl -L http://install.ohmyz.sh | sh"
 end
 
-desc "Sets some osx prefered settings"
+desc "Sets some osx preferred settings"
 task :osx do
-  `git clone https://github.com/haf/osx.git`
+  `git clone https://github.com/lapponiandevil/osx.git`
   in_dir "osx" do
     sh "./.osx"
-    sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"' unless \
-      Dir.exists? '/usr/local/Cellar'
+    sh 'mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew' unless \
+      Dir.exists? '~/homebrew/Cellar'
     sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
     sh "touch ~/.homebrew_analytics_user_uuid && chmod 000 ~/.homebrew_analytics_user_uuid"
     sh "[[ -e $HOME/.zshrc_envs ]] || cp .zshrc_envs ~/"
