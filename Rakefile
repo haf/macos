@@ -1,7 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :zshell, :osx, :brews, :casks, :vim_config, :git_config]
+task :default => [:xcode, :zshell, :osx, :brews, :casks, :casks_with_issues, :vim_config, :git_config]
 
 def curl what
   sh "curl -O #{what}"
@@ -38,6 +38,7 @@ end
 
 desc "Installs xcode. Waits for input while installer is running"
 task :xcode do
+  puts "You'll need to install XCode from App Store."
   begin
     sh "xcode-select --install"
   rescue
@@ -63,6 +64,7 @@ task :osx do
     sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
     sh "touch ~/.homebrew_analytics_user_uuid && chmod 000 ~/.homebrew_analytics_user_uuid"
     sh "[[ -e $HOME/.zshrc_envs ]] || cp .zshrc_envs ~/"
+    sh "export PATH=$HOME/homebrew/bin:$PATH"
   end
   line = "source ~/.zshrc_envs"
   sh "if ! grep -Fxq '#{line}' ~/.zshrc; then echo '#{line}' >> ~/.zshrc; fi"
@@ -70,11 +72,12 @@ end
 
 desc "Updates, upgrades and installs brews"
 task :brews do
-  sh "export PATH=$PATH:$HOME/homebrew/bin"
   sh "brew update"
-  sh "brew upgrade"
+  sh "brew tap caskroom/cask"
   sh "brew tap homebrew/science"
   sh "brew tap homebrew/dupes"
+  sh "brew tap caskroom/fonts"
+  sh "brew upgrade"
   %w|
     git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
     pyenv erlang tsung nmap sqlmap ngrep nvm mc editorconfig
@@ -96,22 +99,25 @@ task :brews do
   # Or in short: "allheaders.h" not found if using `--with-opencl`.
   # Can be made non-HEAD by removing --with-opencl.
   brew "tesseract --with-training-tools --all-languages"
-  brew "caskroom/cask/brew-cask"
 end
 
 desc "Installs common casks"
 task :casks do
   %w|
-    mou spectacle bittorrent-sync caffeine gpgtools virtualbox vagrant
-    iterm2 vlc disk-inventory-x spotify flux atom dockertoolbox skype
+    mou bittorrent-sync caffeine gpgtools virtualbox vagrant
+    iterm2 disk-inventory-x flux atom dockertoolbox skype
     1password
   |.each do |c|
     cask c
   end
-  sh "brew tap caskroom/fonts"
+  puts "Remember to run 'flux' to get it set up."
+end
+
+desc "Installs problematic casks"
+task :casks_with_issues do
+  cask "atom"
+  puts "Move the apm binary from '$HOME/Atom.app/Contents/Resources/app/apm/node_modules/.bin/.' to '/usr/local/bin/.'"
   sh "apm install ionide-installer"
-  puts "Remember to run 'flux', 'spectacle', 'flux' to get them set up."
-  puts "Also, you'll need to install XCode from App Store to make the set up complete."
 end
 
 desc "Sets computer name. Asks for input"
