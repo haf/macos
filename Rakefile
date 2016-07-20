@@ -58,7 +58,7 @@ task :osx do
   `git clone https://github.com/lapponiandevil/osx.git`
   in_dir "osx" do
     sh "./.osx"
-    sh 'mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew' unless \
+    sh 'mkdir ~/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/homebrew' unless \
       Dir.exists? '~/homebrew/Cellar'
     sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
     sh "touch ~/.homebrew_analytics_user_uuid && chmod 000 ~/.homebrew_analytics_user_uuid"
@@ -70,6 +70,7 @@ end
 
 desc "Updates, upgrades and installs brews"
 task :brews do
+  sh "export PATH=$PATH:$HOME/homebrew/bin"
   sh "brew update"
   sh "brew upgrade"
   sh "brew tap homebrew/science"
