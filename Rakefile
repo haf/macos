@@ -59,12 +59,12 @@ task :osx do
   `git clone https://github.com/haf/osx.git`
   in_dir "osx" do
     sh "./.osx"
-    sh "curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/homebrew" unless \
-      Dir.exists? '~/homebrew/Cellar'
+    sh %{/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"} unless \
+      Dir.exists? '/usr/local/Cellar'
     sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
     sh "touch ~/.homebrew_analytics_user_uuid && chmod 000 ~/.homebrew_analytics_user_uuid"
     sh "[[ -e $HOME/.zshrc_envs ]] || cp .zshrc_envs ~/"
-    sh "export PATH=$HOME/homebrew/bin:$PATH"
+    #sh "export PATH=$HOME/homebrew/bin:$PATH"
   end
   line = "source ~/.zshrc_envs"
   sh "if ! grep -Fxq '#{line}' ~/.zshrc; then echo '#{line}' >> ~/.zshrc; fi"
@@ -81,14 +81,12 @@ task :brews do
   %w|
     git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
     pyenv erlang tsung nmap sqlmap ngrep nvm mc editorconfig
-    tmux colordiff ctags
+    colordiff ctags
     automake libtool autoconf opencv3 openssh
   |.each do |r|
     brew r
   end
   brew "homebrew/boneyard/pyenv-pip-rehash"
-
-  brew "imagemagick --with-webp"
   brew "nginx --with-spdy"
   brew "zeromq --universal --with-libpgm --with-libsodium"
   brew "go --cross-compile-common"
