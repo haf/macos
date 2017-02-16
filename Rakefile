@@ -78,8 +78,9 @@ task :brews do
   sh "brew tap homebrew/dupes"
   sh "brew tap caskroom/fonts"
   sh "brew upgrade"
+  brew "readline --universal"
   %w|
-    git vcsh mr jq openssl tree ucspi-tcp readline rbenv ruby-build nginx
+    git vcsh mr jq openssl tree ucspi-tcp rbenv ruby-build nginx
     pyenv erlang tsung nmap sqlmap ngrep nvm mc editorconfig
     colordiff ctags
     automake libtool autoconf opencv3 openssh
