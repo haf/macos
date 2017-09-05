@@ -4,5 +4,5 @@ set -e
 set -x
 echo ${PATH}
 brew install libuv --universal
-nvm install 5.10.1
+nvm install 6.9.5
 npm install -g generator-fsharp npm-check-updates

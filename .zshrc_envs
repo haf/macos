@@ -6,6 +6,7 @@ export LD_LIBRARY_PATH="$(brew --prefix)/lib:/usr/lib:/lib"
 #eval "$(docker-machine env default)"
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 #source ~/.exports

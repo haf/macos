@@ -81,13 +81,12 @@ task :brews do
   brew "readline --universal"
   %w|
     git vcsh mr jq openssl tree ucspi-tcp rbenv ruby-build nginx
-    pyenv erlang tsung nmap sqlmap ngrep nvm mc editorconfig
-    colordiff ctags
+    pyenv zlib pyenv-virtualenv erlang tsung nmap sqlmap ngrep
+    nvm mc editorconfig colordiff ctags
     automake libtool autoconf opencv3 openssh
   |.each do |r|
     brew r
   end
-  brew "homebrew/boneyard/pyenv-pip-rehash"
   brew "nginx --with-spdy"
   brew "zeromq --universal --with-libpgm --with-libsodium"
   brew "go --cross-compile-common"
@@ -103,8 +102,8 @@ end
 desc "Installs common casks"
 task :casks do
   %w|
-    mou spectacle caffeine gpgtools virtualbox vagrant
-    iterm2 disk-inventory-x flux dockertoolbox skype
+    spectacle caffeine gpgtools virtualbox vagrant
+    iterm2 disk-inventory-x flux docker-toolbox skype
     1password
   |.each do |c|
     cask c
