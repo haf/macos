@@ -74,24 +74,19 @@ desc "Updates, upgrades and installs brews"
 task :brews do
   sh "brew update"
   sh "brew tap caskroom/cask"
-  sh "brew tap homebrew/science"
-  sh "brew tap homebrew/dupes"
   sh "brew tap caskroom/fonts"
   sh "brew upgrade"
   brew "readline --universal"
   %w|
     git vcsh mr jq openssl tree ucspi-tcp rbenv ruby-build nginx
     pyenv zlib pyenv-virtualenv erlang tsung nmap sqlmap ngrep
-    nvm mc editorconfig colordiff ctags
-    automake libtool autoconf opencv3 openssh
+    nvm editorconfig colordiff ctags
+    automake libtool autoconf openssh
   |.each do |r|
     brew r
   end
   brew "nginx --with-spdy"
-  brew "zeromq --universal --with-libpgm --with-libsodium"
   brew "go --cross-compile-common"
-  brew "fftw --universal"
-  brew "vips --with-cfitsio --with-fftw --with-imagemagick --with-libexif --with-liboil --with-libtiff --with-little-cms --with-openexr --with-openslide --with-pango --with-python3"
   brew "Caskroom/cask/xquartz"
   # HEAD because https://github.com/tesseract-ocr/tesseract/issues/71
   # Or in short: "allheaders.h" not found if using `--with-opencl`.
@@ -102,8 +97,8 @@ end
 desc "Installs common casks"
 task :casks do
   %w|
-    spectacle caffeine gpgtools virtualbox vagrant
-    iterm2 disk-inventory-x flux docker-toolbox skype
+    spectacle caffeine
+    iterm2 disk-inventory-x flux skype
     1password
   |.each do |c|
     cask c
