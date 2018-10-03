@@ -1,7 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :zshell, :osx, :brews, :casks, :casks_with_issues, :vim_config, :git_config]
+task :default => [:xcode, :zshell, :osx, :brews, :casks, :vim_config, :git_config]
 
 def curl what
   sh "curl -O #{what}"
@@ -87,30 +87,16 @@ task :brews do
   end
   brew "nginx --with-spdy"
   brew "go --cross-compile-common"
-  brew "Caskroom/cask/xquartz"
-  # HEAD because https://github.com/tesseract-ocr/tesseract/issues/71
-  # Or in short: "allheaders.h" not found if using `--with-opencl`.
-  # Can be made non-HEAD by removing --with-opencl.
-  brew "tesseract --with-training-tools --all-languages"
 end
 
 desc "Installs common casks"
 task :casks do
   %w|
-    spectacle caffeine
-    iterm2 disk-inventory-x flux skype
-    1password
+    spectacle caffeine iterm2 flux skype 1password
   |.each do |c|
     cask c
   end
   puts "Remember to run 'flux' to get it set up."
-end
-
-desc "Installs problematic casks"
-task :casks_with_issues do
-  cask "atom"
-  puts "Move the apm binary from '$HOME/Atom.app/Contents/Resources/app/apm/node_modules/.bin/.' to '/usr/local/bin/.'"
-  sh "apm install ionide-installer"
 end
 
 desc "Sets computer name. Asks for input"
