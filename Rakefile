@@ -91,15 +91,10 @@ task :brews do
     ngrep
     nmap
     nvm
-    openssl
-    openssha
     pyenv
     pyenv-virtualenv
     rbenv
-    ruby-build
-    sqlmap
     tree
-    tsung
     ucspi-tcp
     vcsh
     yarn
@@ -120,13 +115,14 @@ task :casks do
     docker
     firefox
     flux
-    gpg-tools
+    gpg-suite
     iterm2
     skype
     slack
     spectacle
     spotify
     visual-studio-code
+    resilio-sync
   |.each do |c|
     cask c
   end
