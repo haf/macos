@@ -73,15 +73,37 @@ end
 desc "Updates, upgrades and installs brews"
 task :brews do
   sh "brew update"
-  sh "brew tap caskroom/cask"
-  sh "brew tap caskroom/fonts"
+  sh "brew tap homebrew/cask"
+  sh "brew tap homebrew/cask-fonts"
   sh "brew upgrade"
   brew "readline --universal"
   %w|
-    git vcsh mr jq openssl tree ucspi-tcp rbenv ruby-build nginx
-    pyenv zlib pyenv-virtualenv erlang tsung nmap sqlmap ngrep
-    nvm editorconfig colordiff ctags
-    automake libtool autoconf openssh
+    autoconf
+    automake
+    colordiff
+    ctags
+    editorconfig
+    erlang
+    git
+    jq
+    libtool
+    mr
+    ngrep
+    nmap
+    nvm
+    openssl
+    openssha
+    pyenv
+    pyenv-virtualenv
+    rbenv
+    ruby-build
+    sqlmap
+    tree
+    tsung
+    ucspi-tcp
+    vcsh
+    yarn
+    zlib
   |.each do |r|
     brew r
   end
@@ -92,7 +114,19 @@ end
 desc "Installs common casks"
 task :casks do
   %w|
-    spectacle caffeine iterm2 flux skype 1password
+    1password
+    caffeine
+    chromium
+    docker
+    firefox
+    flux
+    gpg-tools
+    iterm2
+    skype
+    slack
+    spectacle
+    spotify
+    visual-studio-code
   |.each do |c|
     cask c
   end
