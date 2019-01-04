@@ -58,7 +58,8 @@ desc "Sets some osx preferred settings"
 task :osx do
   `git clone https://github.com/haf/osx.git`
   in_dir "osx" do
-    sh "./.osx"
+    # Hard to keep up to date across macOS versions
+    # sh "./.osx"
     sh %{/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"} unless \
       Dir.exists? '/usr/local/Cellar'
     sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
