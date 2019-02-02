@@ -1,7 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :zshell, :mac_os, :brew, :cask, :vim_config, :git_config]
+task :default => [:xcode, :zshell, :mac_os, :brew, :cask, :computer_name, :vim_config, :git_config, :ssh_config]
 
 def curl what
   sh "curl -O #{what}"
@@ -200,4 +200,8 @@ task :git_config do
   git_config "user.name", "'#{user}'"
   email = ask_for "Git user email: "
   git_config "user.email", "'#{email}'"
+end
+
+task :ssh_config do
+  sh "mkdir -p ~/.ssh"
 end

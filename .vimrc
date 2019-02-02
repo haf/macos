@@ -380,3 +380,5 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+hi Search term=reverse ctermfg=7 ctermbg=22 guifg=wheat guibg=peru

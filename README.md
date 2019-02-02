@@ -2,7 +2,6 @@
 
     curl -O https://raw.githubusercontent.com/haf/osx/master/Rakefile
     rake
-    zsh ./osx/post-install.sh
 
 ### What it does
 

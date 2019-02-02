@@ -9,16 +9,28 @@ ZSH_THEME="bullet-train"
 # DISABLE_AUTO_TITLE="true"
 # ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="false"
-
-# Uncomment the following line if you want to disable marking untracked files under VCS as dirty. This
-# makes repository status check for large repositories much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
-
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git) # plugins=(git ssh-agent)
-
+# See ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme
+BULLETTRAIN_KCTX_KCONFIG="$HOME/.kube/config"
+BULLETTRAIN_PROMPT_ORDER=(
+    time
+    status
+    custom
+    context
+    dir
+    screen
+    go
+    kctx
+    git
+    cmd_exec_time
+)
+# https://github.com/guns/xterm-color-table.vim
+BULLETTRAIN_KCTX_BG="19"
+BULLETTRAIN_KCTX_FG="7"
 source $ZSH/oh-my-zsh.sh
 
 alias l="ls -lah"
