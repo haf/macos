@@ -15,6 +15,7 @@
    sets 256 colours in the terminal and enables kubectl context visualisation
  - Asks and sets computer name properly
  - Asks and sets git name and email
+ - Asks and configures ssh-agent with macOS' keychain to seamless pushes to git-secured repos
  - Installs latest go, node, .net core, etc
 
 You can read [`Rakefile`](./Rakefile); it's easy to follow.
