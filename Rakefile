@@ -118,6 +118,7 @@ task :brew do
     rbenv
     readline
     tree
+    typora
     ucspi-tcp
     yarn
     zlib
