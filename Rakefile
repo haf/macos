@@ -206,9 +206,9 @@ task :ssh_config do
   sh "mkdir -p ~/.ssh"
   begin
     puts "Please ensure you have 1Password synchronised and are ready to input ssh-key passphrases"
-    sh "ssh-add -K ~/.ssh/id_rsa"
-    sh "ssh-add -K ~/.ssh/id_ed25519"
-    sh "ssh-add -K ~/.ssh/id_ecdsa"
+    sh "[ -f ~/.ssh/id_rsa ] && ssh-add -K ~/.ssh/id_rsa"
+    sh "[ -f ~/.ssh/id_ed25519 ] && ssh-add -K ~/.ssh/id_ed25519"
+    sh "[ -f ~/.ssh/id_ecdsa ] && ssh-add -K ~/.ssh/id_ecdsa"
   rescue
     puts "Cancelled."
   ensure
