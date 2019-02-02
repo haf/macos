@@ -1,0 +1,35 @@
+[alias]
+  ad = add . -A
+  co = commit
+  com = commit -m
+  st = status
+
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  logg = log --oneline --format=\"%h %an %s\" --stat
+  today = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+  unk = ls-files . --ignored --exclude-standard --others
+  unt = ls-files . --exclude-standard --others
+  undo = reset --hard
+  br = branch
+  up = pull
+  graph = log --graph --oneline --all
+  sst = submodule status
+  sup = submodule update
+  sin = submodule update
+  ru = remote update
+  ra = remote add
+  st-pull = "!f() { git subtree pull --squash --prefix ${1:-'missing-prefix'} ${2:-'missing-remote'} ${3:-'missing-refspec'}; }; f"
+  st-push = "!f() { git subtree push --prefix ${1:-'missing-prefix'} ${2:-'missing-remote'} ${3:-'missing-refspec'}; }; f"
+  stage = add
+  p = push
+  s = status
+  cor = checkout --theirs --
+  ch = checkout
+[http]
+  postBuffer = 52428800
+[core]
+  autocrlf = false
+[color]
+  ui = true
+[push]
+  default = simple

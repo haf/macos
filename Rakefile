@@ -1,7 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :zshell, :osx, :brews, :casks, :vim_config, :git_config]
+task :default => [:xcode, :zshell, :mac_os, :brew, :cask, :vim_config, :git_config]
 
 def curl what
   sh "curl -O #{what}"
@@ -36,15 +36,14 @@ end
 
 #### Download steps ####
 
-desc "Installs xcode. Waits for input while installer is running"
+desc "Installs xcode. Waits for input while installer is running."
 task :xcode do
-  puts "You'll need to install XCode from App Store."
   begin
     sh "xcode-select --install"
   rescue
     puts "Looks like xcode failed... was it already installed?"
   ensure
-    puts "wait until xcode is installed..."
+    puts "Wait until xcode is installed... When done, press [ENTER] to continue."
     STDIN.gets.strip
   end
 end
@@ -54,80 +53,109 @@ task :zshell do
   sh "curl -L http://install.ohmyz.sh | sh"
 end
 
-desc "Sets some osx preferred settings"
-task :osx do
-  `git clone https://github.com/haf/osx.git`
-  in_dir "osx" do
-    # Hard to keep up to date across macOS versions
-    # sh "./.osx"
-    sh %{/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"} unless \
-      Dir.exists? '/usr/local/Cellar'
-    sh "[[ -e $HOME/.bash_profile ]] || cp .bash_profile ~/"
-    sh "touch ~/.homebrew_analytics_user_uuid && chmod 000 ~/.homebrew_analytics_user_uuid"
-    sh "[[ -e $HOME/.zshrc_envs ]] || cp .zshrc_envs ~/"
-    #sh "export PATH=$HOME/homebrew/bin:$PATH"
-  end
-  line = "source ~/.zshrc_envs"
-  sh "if ! grep -Fxq '#{line}' ~/.zshrc; then echo '#{line}' >> ~/.zshrc; fi"
+def install_homebrew
+  sh %{/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"} unless \
+    Dir.exists? '/usr/local/Homebrew'
+  sh "touch ~/.homebrew_analytics_user_uuid && chmod 000 ~/.homebrew_analytics_user_uuid"
 end
 
-desc "Updates, upgrades and installs brews"
-task :brews do
+task :install_homebrew do
+  install_homebrew
+end
+
+def install_profiles
+  sh "echo curl -LO https://larsenwork.com/monoid/# SOMETHING!!"
+  sh "echo curl -LO http://input.fontbureau.com/download/ SOMETHING!!"
+  sh "curl -L http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -o ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme"
+  sh "cp .zshrc ~"
+end
+
+task :install_profiles do
+  install_profiles
+end
+
+desc "Sets some macOS preferred settings"
+task :mac_os do
+  sh "git clone https://github.com/haf/macos.git"
+  in_dir "macos" do
+    install_homebrew
+    install_profiles
+  end
+end
+
+desc "Updates, upgrades and installs homebrew packages"
+task :brew do
   sh "brew update"
+  sh "brew upgrade"
+  sh "brew cleanup"
   sh "brew tap homebrew/cask"
   sh "brew tap homebrew/cask-fonts"
-  sh "brew upgrade"
-  brew "readline --universal"
-  %w|
+  sh "brew tap caskroom/versions"
+  packages = %w|
     autoconf
     automake
     colordiff
     ctags
     editorconfig
     erlang
+    fzf
     git
+    go
     jq
+    kubectl
     libtool
-    mr
     ngrep
     nmap
     nvm
     pyenv
-    pyenv-virtualenv
     rbenv
+    readline
     tree
     ucspi-tcp
-    vcsh
     yarn
     zlib
-  |.each do |r|
-    brew r
-  end
-  brew "nginx --with-spdy"
-  brew "go --cross-compile-common"
+  |.join(' ')
+  brew packages
+
+  sh "/usr/local/opt/fzf/install --no-bash --no-zsh --completition --key-bindings"
 end
 
 desc "Installs common casks"
-task :casks do
-  %w|
+task :cask do
+  packages = %w|
+    iterm2
     1password
+    authy
     caffeine
     chromium
     docker
     firefox
-    flux
+    font-monoid
+    font-monoid-nerd-font
+    font-monoid-nerd-font-mono
+    google-cloud-sdk
     gpg-suite
-    iterm2
-    skype
+    mailmate
+    omnigraffle
+    resilio-sync
+    sketch
     slack
     spectacle
     spotify
     visual-studio-code
-    resilio-sync
-  |.each do |c|
-    cask c
-  end
-  puts "Remember to run 'flux' to get it set up."
+    android-studio
+  |.join(' ')
+  cask packages
+end
+
+task :cask_configs => :cask do
+  sh "mkdir -p ~/.iterm && cp com.googlecode.iterm2.plist ~/.iterm"
+
+  # https://github.com/eczarny/spectacle/issues/244
+  sh %{cp spectacle.json "#{ENV['HOME']}/Library/Application Support/Spectacle/Shortcuts.json"}
+
+  # TODO: VSCode
+  # TODO: ...
 end
 
 desc "Sets computer name. Asks for input"
@@ -143,16 +171,18 @@ end
 
 desc 'Configure vim'
 task :vim_config do
-  in_dir ENV['HOME'] do
-    system 'git clone https://github.com/amix/vimrc.git ~/.vim_runtime'
-    in_dir '.vim_runtime' do
-      sh 'chmod +x install_awesome_vimrc.sh && ./install_awesome_vimrc.sh'
-    end
-  end
+  #in_dir ENV['HOME'] do
+  #  system 'git clone https://github.com/amix/vimrc.git ~/.vim_runtime'
+  #  in_dir '.vim_runtime' do
+  #    sh 'chmod +x install_awesome_vimrc.sh && ./install_awesome_vimrc.sh'
+  #  end
+  #end
+  sh "cp .vimrc ~/.vimrc"
 end
 
 desc "Sets minimum git config. Asks for input"
 task :git_config do
+  sh "cp .gitconfig ~/.gitconfig"
   git_config "core.editor", "/usr/bin/vim"
   git_config "push.default", "simple"
 

@@ -1,11 +1,8 @@
 ## OSX setup
 
-`curl -O https://raw.githubusercontent.com/haf/osx/master/Rakefile && rake`  
-`zsh`  
-`. ./osx/post-install.zsh`
-
-
-If it crashes, go into the git-cloned `osx` folder and run `rake` again.
+    curl -O https://raw.githubusercontent.com/haf/osx/master/Rakefile
+    rake
+    zsh ./osx/post-install.sh
 
 ### What it does
 
