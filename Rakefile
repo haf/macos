@@ -1,7 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :zshell, :mac_os, :brew, :cask, :computer_name, :vim_config, :git_config, :ssh_config]
+task :default => [:xcode, :zshell, :mac_os, :brew, :cask, :computer_name, :vim_config, :git_config, :ssh_config, :nvm_install]
 
 def curl what
   sh "curl -O #{what}"
@@ -45,6 +45,12 @@ task :xcode do
   ensure
     puts "Wait until xcode is installed... When done, press [ENTER] to continue."
     STDIN.gets.strip
+  end
+
+  begin
+    puts "Now, let's accept the XCode licenses from command line!"
+    sh "sudo xcodebuild -license accept"
+  rescue
   end
 end
 
@@ -104,6 +110,7 @@ task :brew do
     jq
     kubectl
     libtool
+    libuv
     ngrep
     nmap
     nvm
@@ -214,4 +221,8 @@ task :ssh_config do
   ensure
     puts "Done."
   end
+end
+
+task :nvm_install do
+  sh "./nvm-install-lts.sh"
 end
