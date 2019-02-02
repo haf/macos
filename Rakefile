@@ -124,15 +124,25 @@ desc "Installs common casks"
 task :cask do
   packages = %w|
     iterm2
+
     1password
+    adobe-creative-cloud
     authy
     caffeine
     chromium
     docker
+    dotnet-sdk
     firefox
     font-monoid
     font-monoid-nerd-font
     font-monoid-nerd-font-mono
+    font-roboto
+    font-roboto-condensed
+    font-roboto-mono
+    font-roboto-mono-for-powerline
+    font-roboto-slab
+    font-robotomono-nerd-font
+    font-robotomono-nerd-font-mono
     google-cloud-sdk
     gpg-suite
     mailmate
@@ -142,7 +152,9 @@ task :cask do
     slack
     spectacle
     spotify
+    steam
     visual-studio-code
+
     android-studio
   |.join(' ')
   cask packages
@@ -153,9 +165,7 @@ task :cask_configs => :cask do
 
   # https://github.com/eczarny/spectacle/issues/244
   sh %{cp spectacle.json "#{ENV['HOME']}/Library/Application Support/Spectacle/Shortcuts.json"}
-
-  # TODO: VSCode
-  # TODO: ...
+  sh %{cp vscode.json "#{ENV['HOME']}/Library/Application Support/Code/User/settings.json"}
 end
 
 desc "Sets computer name. Asks for input"
