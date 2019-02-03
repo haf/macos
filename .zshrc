@@ -66,13 +66,18 @@ function switch() {
   fi
 
   if cat $HOME/.kube/config | grep "  name: $1" >/dev/null; then
-    echo "Changing kubectl 'context' to $1"
     kubectl config use-context $1
+    local ns=$(kubectl config view --minify --output 'jsonpath={..namespace}')
+    echo -n "Changed kubectl context to '$1'."
+    if [ ! -z $ns ]; then
+      echo -n " In namespace '${ns}'."
+    fi
+    echo ""
   fi
 
   file="$HOME/.config/gcloud/configurations/config_$1"
   if [ -f $file ]; then
-    echo "Changing gcloud 'configuration' to $1"
     gcloud config configurations activate $1
+    echo "Changed gcloud configuration to '$1'"
   fi
 }
