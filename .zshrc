@@ -20,10 +20,10 @@ BULLETTRAIN_PROMPT_ORDER=(
     time
     status
     custom
-    context
     dir
     screen
     go
+    gcloud
     kctx
     git
     cmd_exec_time
@@ -55,3 +55,21 @@ export NVM_DIR="$HOME/.nvm"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 ulimit -S -n 2048
+
+function switch() {
+  if [[ -z $1 ]]; then
+    echo "Pass the name of the gcloud / kubectl context to switch to."
+    return
+  fi
+
+  if cat $HOME/.kube/config | grep "  name: $1" >/dev/null; then
+    echo "Changing kubectl 'context' to $1"
+    kubectl config use-context $1
+  fi
+
+  file="$HOME/.config/gcloud/configurations/config_$1"
+  if [ -f $file ]; then
+    echo "Changing gcloud 'configuration' to $1"
+    gcloud config configurations activate $1
+  fi
+}
