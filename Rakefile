@@ -164,6 +164,7 @@ task :cask do
     steam
     visual-studio-code
 
+    rider
     android-studio
   |.join(' ')
   cask packages
@@ -227,4 +228,8 @@ end
 
 task :nvm_install do
   sh "./nvm-install-lts.sh"
+end
+
+task :macos_config do
+  sh "./config-macos.sh"
 end
