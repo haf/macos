@@ -70,9 +70,8 @@ task :install_homebrew do
 end
 
 def install_profiles
-  sh "echo curl -LO https://larsenwork.com/monoid/# SOMETHING!!"
-  sh "echo curl -LO http://input.fontbureau.com/download/ SOMETHING!!"
-  sh "curl -L http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -o ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme"
+  #sh "curl -L http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -o ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme"
+  sh "cp bullet-train.zsh-theme #{ENV['ZSH_CUSTOM']}/themes/"
   sh "cp .zshrc ~"
 end
 
