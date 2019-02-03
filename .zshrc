@@ -21,6 +21,7 @@ BULLETTRAIN_PROMPT_ORDER=(
     status
     custom
     dir
+    nvm
     screen
     go
     gcloud
@@ -29,6 +30,8 @@ BULLETTRAIN_PROMPT_ORDER=(
     cmd_exec_time
 )
 # https://github.com/guns/xterm-color-table.vim
+BULLETTRAIN_NVM_BG="22"
+BULLETTRAIN_NVM_FG="7"
 BULLETTRAIN_KCTX_BG="19"
 BULLETTRAIN_KCTX_FG="7"
 source $ZSH/oh-my-zsh.sh
