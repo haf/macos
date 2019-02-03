@@ -117,6 +117,7 @@ task :brew do
     pyenv
     rbenv
     readline
+    stern
     tree
     typora
     ucspi-tcp
