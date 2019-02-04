@@ -106,6 +106,7 @@ task :brew do
     fzf
     git
     go
+    helm
     jq
     kubectl
     libtool
@@ -121,6 +122,7 @@ task :brew do
     typora
     ucspi-tcp
     yarn
+    watch
     zlib
   |.join(' ')
   brew packages
