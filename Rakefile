@@ -119,7 +119,6 @@ task :brew do
     readline
     stern
     tree
-    typora
     ucspi-tcp
     yarn
     watch
@@ -163,6 +162,7 @@ task :cask do
     spectacle
     spotify
     steam
+    typora
     visual-studio-code
 
     rider
