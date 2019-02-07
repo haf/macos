@@ -71,7 +71,7 @@ end
 
 def install_profiles
   #sh "curl -L http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -o ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme"
-  sh "cp bullet-train.zsh-theme #{ENV['ZSH_CUSTOM']}/themes/"
+  sh "cp bullet-train.zsh-theme ~/.oh-my-zsh/custom/themes/"
   sh "cp .zshrc ~"
 end
 
