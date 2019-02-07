@@ -126,7 +126,7 @@ task :brew do
   |.join(' ')
   brew packages
 
-  sh "/usr/local/opt/fzf/install --no-bash --no-zsh --completition --key-bindings"
+  sh "/usr/local/opt/fzf/install --no-bash --no-zsh --completion --key-bindings"
 end
 
 desc "Installs common casks"
