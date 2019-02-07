@@ -1,7 +1,7 @@
 # coding: utf-8
 #!/usr/bin/ruby
 
-task :default => [:xcode, :zshell, :mac_os, :brew, :cask, :computer_name, :vim_config, :git_config, :ssh_config, :nvm_install]
+task :default => [:xcode, :zshell, :mac_os, :brew, :cask, :computer_name, :vim_config, :git_config, :ssh_config, :nvm_install, :cask_configs]
 
 def curl what
   sh "curl -O #{what}"
@@ -173,7 +173,8 @@ task :cask do
   cask packages
 end
 
-task :cask_configs => :cask do
+desc "Configure the installed casks"
+task :cask_configs do
   sh "mkdir -p ~/.iterm && cp com.googlecode.iterm2.plist ~/.iterm"
 
   # https://github.com/eczarny/spectacle/issues/244
