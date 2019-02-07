@@ -100,6 +100,7 @@ task :brew do
     autoconf
     automake
     colordiff
+    copyclip
     ctags
     editorconfig
     erlang
@@ -156,6 +157,7 @@ task :cask do
     gpg-suite
     mailmate
     omnigraffle
+    postman
     resilio-sync
     sketch
     slack
@@ -213,13 +215,11 @@ task :git_config do
   git_config "user.email", "'#{email}'"
 end
 
+desc 'Configures SSH and its agent'
 task :ssh_config do
   sh "mkdir -p ~/.ssh"
   begin
     puts "Please ensure you have 1Password synchronised and are ready to input ssh-key passphrases"
-    sh "[ -f ~/.ssh/id_rsa ] && ssh-add -K ~/.ssh/id_rsa"
-    sh "[ -f ~/.ssh/id_ed25519 ] && ssh-add -K ~/.ssh/id_ed25519"
-    sh "[ -f ~/.ssh/id_ecdsa ] && ssh-add -K ~/.ssh/id_ecdsa"
   rescue
     puts "Cancelled."
   ensure

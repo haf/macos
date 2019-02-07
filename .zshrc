@@ -14,6 +14,10 @@ HIST_STAMPS="yyyy-mm-dd"
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git) # plugins=(git ssh-agent)
+[ -f ~/.ssh/id_rsa ] && ssh-add -K ~/.ssh/id_rsa
+[ -f ~/.ssh/id_ed25519 ] && ssh-add -K ~/.ssh/id_ed25519
+[ -f ~/.ssh/id_ecdsa ] && ssh-add -K ~/.ssh/id_ecdsa
+
 # See ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme
 BULLETTRAIN_KCTX_KCONFIG="$HOME/.kube/config"
 BULLETTRAIN_PROMPT_ORDER=(
