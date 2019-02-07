@@ -1,4 +1,4 @@
-export ZSH="/Users/h/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
 ZSH_THEME="bullet-train"
 # CASE_SENSITIVE="true"
