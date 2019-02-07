@@ -106,7 +106,7 @@ task :brew do
     fzf
     git
     go
-    helm
+    kubernetes-helm
     jq
     kubectl
     libtool
