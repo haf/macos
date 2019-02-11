@@ -14,9 +14,9 @@ HIST_STAMPS="yyyy-mm-dd"
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(git) # plugins=(git ssh-agent)
-[ -f ~/.ssh/id_rsa ] && ssh-add -K ~/.ssh/id_rsa
-[ -f ~/.ssh/id_ed25519 ] && ssh-add -K ~/.ssh/id_ed25519
-[ -f ~/.ssh/id_ecdsa ] && ssh-add -K ~/.ssh/id_ecdsa
+[ -f ~/.ssh/id_rsa ] && ssh-add -K ~/.ssh/id_rsa &> /dev/null
+[ -f ~/.ssh/id_ed25519 ] && ssh-add -K ~/.ssh/id_ed25519 &> /dev/null
+[ -f ~/.ssh/id_ecdsa ] && ssh-add -K ~/.ssh/id_ecdsa &> /dev/null
 
 # See ~/.oh-my-zsh/custom/themes/bullet-train.zsh-theme
 BULLETTRAIN_KCTX_KCONFIG="$HOME/.kube/config"
@@ -43,6 +43,7 @@ source $ZSH/oh-my-zsh.sh
 alias l="ls -lah"
 alias k="kubectl"
 alias g="git"
+alias v="vim"
 
 HOMEBREW_PREFIX="/usr/local"
 export HOMEBREW_NO_ANALYTICS=1
@@ -84,4 +85,6 @@ function switch() {
     gcloud config configurations activate $1
     echo "Changed gcloud configuration to '$1'"
   fi
+
+  export PROJECT_ID=$(gcloud config get-value project 2> /dev/null)
 }
