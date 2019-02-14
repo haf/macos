@@ -143,6 +143,8 @@ task :cask do
     docker
     dotnet-sdk
     firefox
+    font-awesome-terminal-fonts
+    font-fontawesome
     font-monoid
     font-monoid-nerd-font
     font-monoid-nerd-font-mono
