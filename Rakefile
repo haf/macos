@@ -119,6 +119,7 @@ task :brew do
     rbenv
     readline
     stern
+    travis
     tree
     ucspi-tcp
     yarn
