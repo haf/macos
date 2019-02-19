@@ -115,6 +115,7 @@ task :brew do
     ngrep
     nmap
     nvm
+    postgresql
     pyenv
     rbenv
     readline
