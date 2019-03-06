@@ -2,6 +2,7 @@
 #!/usr/bin/ruby
 
 task :default => [:xcode, :zshell, :mac_os, :brew, :cask, :computer_name, :vim_config, :git_config, :ssh_config, :nvm_install, :cask_configs]
+task :continue => [:brew, :cask, :vim_config, :git_config, :ssh_config, :nvm_install, :cask_configs, :computer_name]
 
 def curl what
   sh "curl -O #{what}"
@@ -100,7 +101,6 @@ task :brew do
     autoconf
     automake
     colordiff
-    copyclip
     ctags
     editorconfig
     erlang
@@ -142,6 +142,7 @@ task :cask do
     authy
     caffeine
     chromium
+    copyclip
     docker
     dotnet-sdk
     firefox
@@ -183,6 +184,7 @@ task :cask_configs do
 
   # https://github.com/eczarny/spectacle/issues/244
   sh %{cp spectacle.json "#{ENV['HOME']}/Library/Application Support/Spectacle/Shortcuts.json"}
+  sh %{mkdir -p "#{ENV['HOME']}/Library/Application Support/Code/User"}
   sh %{cp vscode.json "#{ENV['HOME']}/Library/Application Support/Code/User/settings.json"}
 end
 
