@@ -45,11 +45,12 @@ EOD
 # Run all of the shell scripts for setting up the machine
 function runSetup() {
   declare -a langs=(
-    "python"
-    "go"
-    "node"
-    "rust"
     "erlang"
+    "go"
+    "java"
+    "node"
+    "python"
+    "ruby"
   )
 
 
