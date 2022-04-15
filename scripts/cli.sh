@@ -22,6 +22,7 @@ declare -a packages=(
 	"kubectx"
 	"kubeseal"
 	"kustomize"
+	"librdkafka"
 	"ngrep"
 	"nmap"
 	"nvm"

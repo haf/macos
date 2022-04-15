@@ -9,6 +9,10 @@ export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_NO_ANALYTICS=1
 
+# compilation of C/C++
+export LIBRARY_PATH="$HOMEBREW_PREFIX/lib:/usr/lib"
+export CPATH="$HOMEBREW_PREFIX/include:$(xcrun --show-sdk-path)/usr/include"
+
 # langs
 export GOPATH="${HOME}/go"
 export GOROOT="$HOMEBREW_PREFIX/opt/go/libexec"
