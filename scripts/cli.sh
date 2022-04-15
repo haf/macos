@@ -15,6 +15,7 @@ declare -a packages=(
 	"findutils"
 	"fzf"
 	"git-lfs"
+	"grpcurl"
 	"hasura-cli"
 	"helm"
 	"jq"
