@@ -60,7 +60,12 @@ killall iTerm2
 cp ./files/haf.iterm2-profile.json $HOME/Library/Application\ Support/iTerm2/DynamicProfiles/
 
 
+# Configure Rectangle
 /Applications/Rectangle.app/Contents/MacOS/Rectangle &
 sleep 5
 killall Rectangle
 cp ./files/com.knollsoft.Rectangle.plist ~/Library/Preferences/
+
+
+# Configure VSCode
+code --sync on
