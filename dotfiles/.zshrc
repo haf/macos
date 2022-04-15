@@ -123,6 +123,7 @@ alias g='git'
 alias l='ls -lah --color'
 alias ls='ls --color'
 alias k='kubectl'
+alias dc='docker compose'
 
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
