@@ -17,3 +17,4 @@ gem install bundler
 rbenv rehash
 
 gem install colorls
+gem install cocoapods

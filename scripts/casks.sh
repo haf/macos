@@ -58,3 +58,9 @@ echo
 sleep 5
 killall iTerm2
 cp ./files/haf.iterm2-profile.json $HOME/Library/Application\ Support/iTerm2/DynamicProfiles/
+
+
+/Applications/Rectangle.app/Contents/MacOS/Rectangle &
+sleep 5
+killall Rectangle
+cp ./files/com.knollsoft.Rectangle.plist ~/Library/Preferences/
