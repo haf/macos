@@ -91,6 +91,9 @@ ulimit -S -n 2048
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && source "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # Use additional Git repositories pulled in with `z4h install`.
 z4h source ohmyzsh/ohmyzsh/lib/diagnostics.zsh       # source an individual file
 z4h load   ohmyzsh/ohmyzsh/plugins/1password
