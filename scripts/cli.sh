@@ -14,6 +14,7 @@ declare -a packages=(
 	"editorconfig"
 	"findutils"
 	"fzf"
+	"gh"            # https://github.com/cli/cli
 	"git-lfs"
 	"grpcurl"       # https://github.com/fullstorydev/grpcurl
 	"hasura-cli"
