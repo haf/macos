@@ -127,6 +127,13 @@ function runSetup() {
   echo
   ( ./scripts/gcp.sh )
 
+  # Setup Docker CLI
+  echo
+  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running setup of Docker CLI:"
+  echo    "  ./scripts/docker.sh"
+  echo
+  ( ./scripts/docker.sh )
+
   # Setup vim
   echo
   echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running setup of vim config:"
