@@ -62,7 +62,7 @@
 
     },
     "gapSize" : {
-      "float" : 0
+      "float" : 1
     },
     "hideMenubarIcon" : {
       "bool" : false
@@ -170,7 +170,7 @@
   "shortcuts" : {
     "bottomHalf" : {
       "keyCode" : 125,
-      "modifierFlags" : 786432
+      "modifierFlags" : 1572864
     },
     "bottomLeft" : {
       "keyCode" : 123,
@@ -242,7 +242,7 @@
     },
     "topHalf" : {
       "keyCode" : 126,
-      "modifierFlags" : 786432
+      "modifierFlags" : 1572864
     },
     "topLeft" : {
       "keyCode" : 123,
