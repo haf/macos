@@ -96,7 +96,7 @@ function runSetup() {
   do
     echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of ./scripts/langs/${language}:"
     echo    "  ./scripts/cli.sh"
-    ( ./scripts/langs/${language} )
+    ( ./scripts/langs/${language}.sh )
   done
 
   # Install Fonts
