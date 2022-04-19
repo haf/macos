@@ -2,6 +2,16 @@
   co = commit
   com = commit -m
   s = status
+  b = branch
+
+  # Fancy branch display
+  br = for-each-ref --sort=-committerdate refs/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
+  # Remove branches that have already been merged with master
+  # a.k.a. ‘delete merged’
+  br-dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+  ru = remote update
 
   # Clone a repository including all submodules
   c = clone --recursive
@@ -45,10 +55,6 @@
   # Find commits by commit message
   fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
-  # Remove branches that have already been merged with master
-  # a.k.a. ‘delete merged’
-  dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
 
@@ -89,8 +95,8 @@
   followTags = true
 
 [user]
-  email = henrik@haf.se
   name = Henrik Feldt
+  email = henrik@haf.se
 
 [github]
   user = haf
