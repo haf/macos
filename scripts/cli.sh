@@ -17,7 +17,7 @@ declare -a packages=(
 	"gh"            # https://github.com/cli/cli
 	"git-lfs"
 	"grpcurl"       # https://github.com/fullstorydev/grpcurl
-	"hasura-cli"
+	#"hasura-cli"   # https://github.com/hasura/graphql-engine/issues/8398
 	"helm"
 	"jq"
 	"kubectx"
@@ -53,3 +53,6 @@ do
 done
 
 brew link --overwrite protobuf
+
+HASURA_WORKING_VERSION=v2.4.0
+curl -L "https://github.com/hasura/graphql-engine/releases/download/${HASURA_WORKING_VERSION}/cli-hasura-darwin-arm64" -o "$HOME/bin/hasura"
