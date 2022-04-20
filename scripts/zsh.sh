@@ -35,5 +35,3 @@ fi
 
 # Change Zsh to be the default shell
 chsh -s $HOMEBREW_PREFIX/bin/zsh
-
-mkdir -p $HOME/{.completions,bin}

@@ -29,6 +29,9 @@ function copyDotfiles() {
   /usr/bin/rsync -r $BOOTSTRAP_MACOS_DIR/dotfiles/ ~/
 }
 
+# Create directories for binaries and CLI completions
+mkdir -p $HOME/{.completions,bin}
+
 # Backup dotfiles
 echo
 echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Backing up ~/.* files to "
