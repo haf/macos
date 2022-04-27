@@ -24,6 +24,7 @@ declare -a packages=(
 	"kubeseal"
 	"kustomize"
 	"librdkafka"
+	"logcli"
 	"ngrep"
 	"nmap"
 	"nvm"
