@@ -127,6 +127,7 @@ alias l='ls -lah --color'
 alias ls='ls --color'
 alias k='kubectl'
 alias dc='docker compose'
+alias tf='terraform'
 
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
