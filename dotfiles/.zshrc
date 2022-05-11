@@ -26,11 +26,6 @@ zstyle ':z4h:autosuggestions' forward-char 'accept'
 # Recursively traverse directories when TAB-completing files.
 zstyle ':z4h:fzf-complete' recurse-dirs 'no'
 
-# Enable direnv to automatically source .envrc files.
-zstyle ':z4h:direnv'         enable 'yes'
-# Show "loading" and "unloading" notifications from direnv.
-zstyle ':z4h:direnv:success' notify 'yes'
-
 # Enable ('yes') or disable ('no') automatic teleportation of z4h over
 # SSH when connecting to these hosts.
 zstyle ':z4h:ssh:ssh.causiq.com'      enable 'yes'
@@ -91,13 +86,9 @@ ulimit -S -n 2048
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && source "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-# direnv
-eval "$(direnv hook zsh)"
-
 # Use additional Git repositories pulled in with `z4h install`.
 z4h source ohmyzsh/ohmyzsh/lib/diagnostics.zsh       # source an individual file
 z4h load   ohmyzsh/ohmyzsh/plugins/1password
-z4h load   ohmyzsh/ohmyzsh/plugins/direnv
 z4h source MichaelAquilina/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
 z4h source RobSis/zsh-completion-generator/zsh-completion-generator.plugin.zsh
 
