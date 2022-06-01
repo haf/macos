@@ -55,7 +55,7 @@ zstyle :plugin:zsh-completion-generator programs   colorls
 z4h init || return
 
 # Extend PATH.
-path=(~/bin $path)
+path=(~/bin $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin $path)
 
 # Extend FPATH
 fpath=(~/.completions $fpath)
