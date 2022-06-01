@@ -42,33 +42,25 @@ EOD
   read -p "" -n 1
 }
 
+# Get the permissions we will need manually
+echo
+echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Adding Terminal.app to be able to execute applescript: ./setup.sh"
+echo
+addTerminalToPrivacyAccessibility
+
 # Run all of the shell scripts for setting up the machine
 function runSetup() {
   declare -a langs=(
     "erlang"
-    "go"
     "java"
     "node"
     "python"
     "ruby"
+    "go"
   )
-
 
   # Backup users dotfiles and copy over our dotfiles
   ( ./scripts/dotfiles.sh )
-
-  # Get the permissions we will need manually
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Adding Terminal.app to be able to execute applescript: ./setup.sh"
-  echo
-  addTerminalToPrivacyAccessibility
-
-  # Install Xcode CLI tools
-  echo
-  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Xcode CLI tools:"
-  echo    "  ./scripts/xcode.sh"
-  echo
-  ( ./scripts/xcode.sh )
 
   # Setup macOS Preferences and Settings
   echo
@@ -76,6 +68,13 @@ function runSetup() {
   echo    "./scripts/macos.sh"
   echo
   ( ./scripts/macos.sh )
+
+  # Install Xcode CLI tools
+  echo
+  echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of Xcode CLI tools:"
+  echo    "  ./scripts/xcode.sh"
+  echo
+  ( ./scripts/xcode.sh )
 
   # Install Homebrew
   echo
@@ -95,7 +94,7 @@ function runSetup() {
   for language in "${langs[@]}"
   do
     echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m Running install of ./scripts/langs/${language}:"
-    echo    "  ./scripts/cli.sh"
+    echo    "    ./scripts/langs/${language}.sh "
     ( ./scripts/langs/${language}.sh )
   done
 

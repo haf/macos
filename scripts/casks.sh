@@ -14,7 +14,6 @@ declare -a packages=(
 	"google-cloud-sdk"
 	"gpg-suite"
 	"iterm2"
-	"kite"
 	"little-snitch"
 	"loom"
 	"macdown"
@@ -57,14 +56,14 @@ echo
 /Applications/iTerm.app/Contents/MacOS/iTerm2 &
 sleep 5
 killall iTerm2
-cp ./files/haf.iterm2-profile.json $HOME/Library/Application\ Support/iTerm2/DynamicProfiles/
+echo "Use Import Profile in the UI from ./config/haf-iterm2.json"
 
 
 # Configure Rectangle
 /Applications/Rectangle.app/Contents/MacOS/Rectangle &
 sleep 5
 killall Rectangle
-cp ./files/com.knollsoft.Rectangle.plist ~/Library/Preferences/
+echo "Use ./config/RectangleConfig.json in the UI"
 
 
 # Configure VSCode
