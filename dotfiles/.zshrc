@@ -71,7 +71,7 @@ ulimit -S -n 2048
 
 # SSH
 [ -f ~/.ssh/id_rsa ] && /usr/bin/ssh-add -K ~/.ssh/id_rsa &> /dev/null
-[ -f ~/.ssh/id_ed25519 ] && /usr/bin/ssh-add -K ~/.ssh/id_25519 &> /dev/null
+[ -f ~/.ssh/id_ed25519 ] && /usr/bin/ssh-add -K ~/.ssh/id_ed25519 &> /dev/null
 
 # autojump
 [ -f $HOMEBREW_PREFIX/etc/profile.d/autojump.sh ] && . $HOMEBREW_PREFIX/etc/profile.d/autojump.sh
