@@ -8,6 +8,7 @@ declare -a packages=(
 	"automake"
 	"buf"
 	"bzip2"
+	"cfssl"
 	"colordiff"
 	"curl"
 	"direnv"
