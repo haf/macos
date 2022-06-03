@@ -20,4 +20,12 @@ export NVM_DIR="$HOME/.nvm"
 export VIRTUAL_ENV_DISABLE_PROMPT=1 # https://github.com/Powerlevel9k/powerlevel9k#virtualenv
 export AUTOSWITCH_SILENT=1
 
-path=(~/.pyenv/shims ~/.rbenv/shims ${GOPATH}/bin ${GOROOT}/bin $path)
+# grpc build
+export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
+export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
+
+# openssl
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl@3/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@3/include"
+
+path=(~/.pyenv/shims ~/.rbenv/shims ${GOPATH}/bin ${GOROOT}/bin ${HOMEBREW_PREFIX}/opt/openssl@3/bin $path)
