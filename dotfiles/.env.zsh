@@ -27,7 +27,5 @@ export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 # openssl
 export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl@3/lib"
 export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl@3/include"
-export PATH="$HOMEBREW_PREFIX/opt/openssl@3/bin:$PATH"
 
-
-path=(~/.pyenv/shims ~/.rbenv/shims ${GOPATH}/bin ${GOROOT}/bin $path)
+path=(~/.pyenv/shims ~/.rbenv/shims ${GOPATH}/bin ${GOROOT}/bin ${HOMEBREW_PREFIX}/opt/openssl@3/bin $path)
