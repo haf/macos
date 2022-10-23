@@ -8,7 +8,7 @@ function backupDotfiles() {
     echo -e "\033[1mBOOTSTRAP_MACOS:\033[0m A backup of your dotfiles (~/.*)"
     echo    "already exists in your home directory! We cannot run this script"
     echo    "safely as it will overwrite an existing backup or do something you"
-    echo    "may not like (e.g. ~/bootstrap-macos-dotfiles-backup exists will"
+    echo    "may not like (e.g. ~/.bootstrap-macos-dotfiles-backup exists will"
     echo    "overwritten and it contains some of your existing dotfiles you"
     echo    "may want to retain). Exiting to protect these files:"
     echo    "./scripts/bootstrap.sh"
