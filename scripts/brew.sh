@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
 # Install Homebrew if not installed - brew.sh
 if ! hash brew 2>/dev/null; then
@@ -9,7 +10,7 @@ fi
 touch "$HOME/.homebrew_analytics_user_uuid" && chmod 000 "$HOME/.homebrew_analytics_user_uuid"
 
 # Enable the 'brew' command
-[ command -v brew &> /dev/null ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[ command -v brew &> /dev/null ] || eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Turn off Google Analytics
 brew analytics off
