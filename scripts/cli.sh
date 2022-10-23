@@ -19,6 +19,7 @@ declare -a packages=(
 	"git-lfs"
 	"grpcurl"       # https://github.com/fullstorydev/grpcurl
 	#"hasura-cli"   # https://github.com/hasura/graphql-engine/issues/8398
+	"kind"
 	"helm"
 	"jq"
 	"kubectx"
