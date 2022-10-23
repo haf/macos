@@ -14,9 +14,6 @@ brew install font-fira-code
 # Monoid
 brew install font-monoid font-monoid-nerd-font
 
-# Roboto
-brew install roboto roboto-mono roboto-mono-for-powerline
-
 # https://github.com/powerline/fonts#powerline-fonts
 mkdir -p powerline
 pushd powerline

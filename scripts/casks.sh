@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
+# 1password, 1password-cli install v8 which is unusable
+
 declare -a packages=(
-	"1password"
-	"1password-cli"
 	"authy"
 	"charles"
 	"chromium"
@@ -13,13 +13,11 @@ declare -a packages=(
 	"firefox"
 	"google-cloud-sdk"
 	"gpg-suite"
-	"iterm2"
 	"little-snitch"
 	"loom"
 	"macdown"
 	"mailmate"
 	"miro"
-	"openjdk"
 	"pgadmin4"
 	"rectangle"
 	"resilio-sync"
