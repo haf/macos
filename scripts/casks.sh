@@ -13,6 +13,7 @@ declare -a packages=(
 	"firefox"
 	"google-cloud-sdk"
 	"gpg-suite"
+	"iterm2"
 	"little-snitch"
 	"loom"
 	"macdown"
