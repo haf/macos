@@ -24,6 +24,7 @@ compaudit | xargs chmod g-w,o-w $HOMEBREW_PREFIX/share/zsh/site-functions
 
 # Configure zsh theme
 $HOMEBREW_PREFIX/bin/zsh -l -c 'omz theme use powerlevel10k/powerlevel10k'
+cp config/.p10k.zsh ~
 
 # Install zsh-bench to ensure we are always fast
 git clone https://github.com/romkatv/zsh-bench "$HOME/dev/zsh-bench"
