@@ -18,7 +18,7 @@ declare -a packages=(
 	"gh"            # https://github.com/cli/cli
 	"git-lfs"
 	"grpcurl"       # https://github.com/fullstorydev/grpcurl
-	#"hasura-cli"   # https://github.com/hasura/graphql-engine/issues/8398
+	"hasura-cli"   # https://github.com/hasura/graphql-engine/issues/8398
 	"kind"
 	"helm"
 	"jq"
