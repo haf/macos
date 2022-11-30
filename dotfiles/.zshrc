@@ -62,6 +62,7 @@ fpath=(~/.completions $fpath)
 
 # Export environment variables.
 export GPG_TTY=$TTY
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
