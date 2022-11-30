@@ -21,3 +21,9 @@ git clone https://github.com/haf/macos.git && cd macos
 
 - https://github.com/romkatv/zsh4humans
 - https://github.com/johnwyles/bootstrap-macos
+
+
+
+## TODO
+
+- [gcloud components install gke-gcloud-auth-plugin](https://fabianlee.org/2022/10/20/gcp-fix-kubectl-auth-plugin-deprecation-warning-by-installing-new-auth-plugin/)
