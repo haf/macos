@@ -38,6 +38,7 @@ declare -a packages=(
 	"pyenv"
 	"rbenv"
 	"readline"
+	"redis"
 	"ruby-build"    # for rbenv
 	"skaffold"      # local k8s clusters
 	"stern"
