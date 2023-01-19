@@ -5,6 +5,7 @@ gcloud init
 
 # authenticate
 gcloud auth login
+gcloud auth application-default login
 
 # set up docker credential helpers for it
 gcloud auth configure-docker

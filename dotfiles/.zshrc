@@ -1,6 +1,5 @@
 # Personal Zsh configuration file. It is strongly recommended to keep all
-# shell customization and configuration (including exported environment
-# variables such as PATH) in this file or in files sourced from it.
+# shell customization and configuration in this file or in files sourced from it.
 #
 # Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
 
@@ -24,7 +23,7 @@ zstyle ':z4h:' term-shell-integration 'yes'
 zstyle ':z4h:autosuggestions' forward-char 'accept'
 
 # Recursively traverse directories when TAB-completing files.
-zstyle ':z4h:fzf-complete' recurse-dirs 'no'
+zstyle ':z4h:fzf-complete' recurse-dirs 'yes'
 
 # Enable ('yes') or disable ('no') automatic teleportation of z4h over
 # SSH when connecting to these hosts.
@@ -54,15 +53,12 @@ zstyle :plugin:zsh-completion-generator programs   colorls
 # perform network I/O must be done above. Everything else is best done below.
 z4h init || return
 
-# Extend PATH.
-path=(~/bin $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin $path)
+#############################
+# Extend PATH in ~/.env.zsh #
+#############################
 
 # Extend FPATH
 fpath=(~/.completions $fpath)
-
-# Export environment variables.
-export GPG_TTY=$TTY
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
@@ -82,6 +78,12 @@ ulimit -S -n 2048
 
 # rbenv
 [ command -v rbenv &> /dev/null ] && eval "$(rbenv init -) &> /dev/null"
+
+# ghcup
+z4h source "/Users/h/.ghcup/env" # ghcup-env
+
+# process-poster (this eval needs bash-completion compatibility)
+[ -f ~/bin/process-poster  ] && eval "$(register-python-argcomplete process-poster)"
 
 # nvm
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && source "/opt/homebrew/opt/nvm/nvm.sh"
