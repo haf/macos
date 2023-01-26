@@ -16,10 +16,11 @@ declare -a packages=(
 	"findutils"
 	"fzf"
 	"gh"            # https://github.com/cli/cli
-	"git-lfs"
+	"git-lfs"       # https://git-lfs.com
+	"go-task"       # https://taskfile.dev
 	"grpcurl"       # https://github.com/fullstorydev/grpcurl
-	"hasura-cli"   # https://github.com/hasura/graphql-engine/issues/8398
-	"kind"
+	"hasura-cli"    # https://github.com/hasura/graphql-engine/issues/8398
+	"kind"          # https://kind.sigs.k8s.io
 	"helm"
 	"jq"
 	"kubectx"
@@ -30,7 +31,7 @@ declare -a packages=(
 	"ngrep"
 	"nmap"
 	"nvm"
-	"openjdk@17"    # https://whichjdk.com/
+	"openjdk@17"    # https://whichjdk.com
 	"openssl"
 	"postgresql"    # https://stackoverflow.com/a/24645416 https://www.psycopg.org/psycopg3/docs/basic/install.html#local-installation
 	"protobuf"
@@ -42,7 +43,7 @@ declare -a packages=(
 	"ruby-build"    # for rbenv
 	"skaffold"      # local k8s clusters
 	"stern"
-	"terraform"
+	"terraform"     # https://www.terraform.io
 	"tor"
 	"tree"
 	"watch"
