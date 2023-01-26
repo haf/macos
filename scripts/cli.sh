@@ -26,6 +26,7 @@ declare -a packages=(
 	"kubectx"
 	"kubeseal"
 	"kustomize"
+	"derailed/k9s/k9s"
 	"librdkafka"
 	"logcli"
 	"ngrep"
