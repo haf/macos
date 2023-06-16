@@ -21,6 +21,7 @@ declare -a packages=(
 	"mailmate"
 	"miro"
 	"pgadmin4"
+	"portaudio"
 	"rectangle"
 	"resilio-sync"
 	"signal"
