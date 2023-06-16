@@ -13,6 +13,7 @@ declare -a packages=(
 	"flac"
 	"notion"
 	"firefox"
+	"ffmpeg"
 	"google-cloud-sdk"
 	"gpg-suite"
 	"iterm2"
