@@ -10,6 +10,7 @@ declare -a packages=(
 	"discord"
 	"docker"
 	"figma"
+	"flac"
 	"notion"
 	"firefox"
 	"google-cloud-sdk"
