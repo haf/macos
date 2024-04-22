@@ -21,3 +21,4 @@ git clone https://github.com/haf/macos.git && cd macos
 
 - https://github.com/romkatv/zsh4humans
 - https://github.com/johnwyles/bootstrap-macos
+- https://joachim8675309.medium.com/managing-the-many-k8s-versions-2f9216efb0bb

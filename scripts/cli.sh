@@ -3,6 +3,7 @@ brew tap bufbuild/buf
 brew tap argoproj/tap
 
 declare -a packages=(
+	"asdf"
 	"autoconf"
 	"autojump"      # https://github.com/wting/autojump
 	"automake"
