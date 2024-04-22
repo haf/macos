@@ -6,11 +6,13 @@ declare -a packages=(
 	"autoconf"
 	"autojump"      # https://github.com/wting/autojump
 	"automake"
+	"azure-cli"
 	"buf"
 	"bzip2"
 	"cfssl"
 	"colordiff"
 	"curl"
+	"derailed/k9s/k9s"
 	"direnv"
 	"editorconfig"
 	"findutils"
@@ -20,14 +22,12 @@ declare -a packages=(
 	"go-task"       # https://taskfile.dev
 	"grpcurl"       # https://github.com/fullstorydev/grpcurl
 	"hasura-cli"    # https://github.com/hasura/graphql-engine/issues/8398
-	"kind"          # https://kind.sigs.k8s.io
- 	"kcat"
 	"helm"
 	"jq"
+	"kind"          # https://kind.sigs.k8s.io
 	"kubectx"
 	"kubeseal"
 	"kustomize"
-	"derailed/k9s/k9s"
 	"librdkafka"
 	"logcli"
 	"ngrep"
@@ -53,6 +53,7 @@ declare -a packages=(
 	"zlib"
 	"zsh"
 	"zsh-completions"
+ 	"kcat"
 )
 
 for i in "${packages[@]}"

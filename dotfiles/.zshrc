@@ -28,6 +28,7 @@ zstyle ':z4h:fzf-complete' recurse-dirs 'yes'
 # Enable ('yes') or disable ('no') automatic teleportation of z4h over
 # SSH when connecting to these hosts.
 zstyle ':z4h:ssh:ssh.causiq.com'      enable 'yes'
+#zstyle ':z4h:ssh:de.haf.se'           enable 'yes'
 # The default value if none of the overrides above match the hostname.
 zstyle ':z4h:ssh:*'                   enable 'no'
 
@@ -59,25 +60,34 @@ z4h init || return
 
 # Extend FPATH
 fpath=(~/.completions $fpath)
+# You sometimes have to run this manually:
+autoload -U compinit
+compinit -i
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
+z4h source ~/.env.secrets.zsh
 
 # Open file descriptors
 ulimit -S -n 2048
 
-# SSH
-[ -f ~/.ssh/id_rsa ] && /usr/bin/ssh-add -K ~/.ssh/id_rsa &> /dev/null
-[ -f ~/.ssh/id_ed25519 ] && /usr/bin/ssh-add -K ~/.ssh/id_ed25519 &> /dev/null
-
 # autojump
 [ -f $HOMEBREW_PREFIX/etc/profile.d/autojump.sh ] && . $HOMEBREW_PREFIX/etc/profile.d/autojump.sh
+
+# asdf
+source $HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh
+
+# az (requires bash-completion compatibility)
+source $HOMEBREW_PREFIX/etc/bash_completion.d/az
 
 # pyenv
 [ command -v pyenv &> /dev/null ] && eval "$(pyenv init -) &> /dev/null"
 
 # rbenv
 [ command -v rbenv &> /dev/null ] && eval "$(rbenv init -) &> /dev/null"
+
+# jenv
+eval "$(jenv init -) &> /dev/null"
 
 # ghcup
 z4h source "/Users/h/.ghcup/env" # ghcup-env
@@ -129,3 +139,4 @@ alias ls="${aliases[ls]:-ls} -A"
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
 setopt no_auto_menu  # require an extra TAB press to open the completion menu
+export JAVA_HOME=$(/usr/libexec/java_home)
