@@ -24,6 +24,7 @@ declare -a packages=(
 	"grpcurl"       # https://github.com/fullstorydev/grpcurl
 	"hasura-cli"    # https://github.com/hasura/graphql-engine/issues/8398
 	"helm"
+	"jenv"
 	"jq"
 	"kind"          # https://kind.sigs.k8s.io
 	"kubectx"

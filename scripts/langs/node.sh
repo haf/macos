@@ -8,9 +8,9 @@ if ! command -v nvm &>/dev/null; then
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh" || true
 fi
 
-echo "Installing Node v16"
-nvm install 16 --latest-npm
-nvm use 16
+echo "Installing Node v20"
+nvm install 20 --latest-npm
+nvm use 20
 npm i -g corepack
 yarn set version stable
 
