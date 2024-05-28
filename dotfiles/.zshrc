@@ -27,8 +27,7 @@ zstyle ':z4h:fzf-complete' recurse-dirs 'yes'
 
 # Enable ('yes') or disable ('no') automatic teleportation of z4h over
 # SSH when connecting to these hosts.
-zstyle ':z4h:ssh:ssh.causiq.com'      enable 'yes'
-#zstyle ':z4h:ssh:de.haf.se'           enable 'yes'
+#zstyle ':z4h:ssh:ssh.example.com'           enable 'yes'
 # The default value if none of the overrides above match the hostname.
 zstyle ':z4h:ssh:*'                   enable 'no'
 
