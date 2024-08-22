@@ -45,6 +45,7 @@ declare -a packages=(
 	"readline"
 	"redis"
 	"ruby-build"    # for rbenv
+ 	"shfmt"
 	"skaffold"      # local k8s clusters
 	"stern"
 	"terraform"     # https://www.terraform.io
